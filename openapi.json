@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: iap-hulu
+  title: coffee-shop
   version: 0.0.1-SNAPSHOT
 paths:
   /coffee:
