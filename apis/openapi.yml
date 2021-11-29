@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: coffee-shop
+  version: 0.0.1-SNAPSHOT
+paths:
+  /coffee:
+    get:
+      tags:
+        - coffee-shop
+      summary: List all coffee types in the shop.
+      operationId: List coffee types
+      responses:
+        '200':
+          description: Coffee types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        default:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+  /coffee/{coffeeType}:
+    get:
+      tags:
+        - coffee-shop
+      summary: List all coffee types in the shop.
+      operationId: List coffee types
+      parameters:
+        - name: coffeeType
+          in: path
+          description: Coffee type
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Drinks in the type category
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Drink'
+        default:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    Drink:
+      required:
+        - title
+        - id
+        - description
+      type: object
+      properties:
+        title:
+          type: string
+        id:
+          type: integer
+        description:
+          type: string
+        ingredients:
+          type: array
+          items:
+            type: string
+
