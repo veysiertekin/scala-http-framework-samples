@@ -1,0 +1,7 @@
+{
+  "name": "Coffee Shop Service",
+  "description": "static coffe-shop api",
+  "repository": "https://github.com/veysiertekin/scala-http-framework-samples",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/main/public/node.svg",
+  "keywords": ["api","heroku"]
+}

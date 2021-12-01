@@ -1,0 +1,30 @@
+name: publish-openapi
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+      - name: Setup Scala
+        uses: olafurpg/setup-scala@v13
+        with:
+          java-version: openjdk@1.11.0
+      - name: Generate OpenApi Spec
+        working-directory: tapir-akka-http
+        run: sbt "runMain com.test.example.http_example.OpenApiGenerator $GITHUB_WORKSPACE/openapi.yaml"
+      - name: Swagger ui action
+        id: swagger-ui-action
+        uses: pjoc-team/swagger-ui-action@v0.0.2
+        with:
+          dir: ./
+          pattern: openapi.yaml
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: swagger-ui
