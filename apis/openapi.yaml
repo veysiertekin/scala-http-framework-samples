@@ -1,12 +1,12 @@
 openapi: 3.0.3
 info:
-  title: coffee-shop
-  version: 0.0.1-SNAPSHOT
+  title: akka-http
+  version: 0.1.0-SNAPSHOT
 paths:
   /coffee:
     get:
       tags:
-        - coffee-shop
+      - coffee-shop
       summary: List all coffee types in the shop.
       operationId: List coffee types
       responses:
@@ -27,16 +27,16 @@ paths:
   /coffee/{coffeeType}:
     get:
       tags:
-        - coffee-shop
+      - coffee-shop
       summary: List all coffee types in the shop.
       operationId: List coffee types
       parameters:
-        - name: coffeeType
-          in: path
-          description: Coffee type
-          required: true
-          schema:
-            type: string
+      - name: coffeeType
+        in: path
+        description: Coffee type
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Drinks in the type category
@@ -56,9 +56,9 @@ components:
   schemas:
     Drink:
       required:
-        - title
-        - id
-        - description
+      - title
+      - id
+      - description
       type: object
       properties:
         title:
@@ -71,4 +71,3 @@ components:
           type: array
           items:
             type: string
-
